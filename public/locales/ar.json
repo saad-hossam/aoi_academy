@@ -1,0 +1,14 @@
+{
+  "header": {
+    "title": "Welcome to our website!",
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "contact": "Contact Us"
+    }
+  },
+  "footer": {
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service"
+  }
+}
