@@ -1,6 +1,12 @@
 <?php
 
 use App\Mail\UserMessage;
+
+use App\Http\Controllers\CertificateController;
+use App\Models\Certificate;
+use App\Models\Project;
+// use App\Mail\UserMessage;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +20,24 @@ use App\Http\Controllers\AdminController;
 
 
 
+use App\Http\Controllers\NewsController;
+
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\VideoController;
+
+
+use App\Http\Controllers\GallaryController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\SubDepartmentController;
 
 // use App\Http\Middleware\TrackVisitor;
 
@@ -50,6 +74,31 @@ Route::group(['prefix'=>'/admin/','middleware' => ['auth','admin']], function ()
 
 
 
+    Route::resource('departments', DepartmentController::class);
+    // Route::resource('categories', CategoryController::class);
+    Route::resource('products', ProductController::class);
+    // Route::resource('gallaries', GallaryController::class);
+    Route::resource('messages', MessageController::class);
+    // Route::resource('abouts', AboutController::class);
+    Route::resource('partners', PartnerController::class);
+    Route::resource('sliders', SliderController::class);
+    // Route::resource('histories', HistoryController::class);
+    Route::resource('histories', HistoryController::class);
+    Route::resource('services', ServiceController::class);
+    Route::resource('projects', ProjectController::class);
+    Route::get('projects/{project}/images', [ProjectController::class, 'showImages'])->name('projects.showImages');
+    Route::resource('news', NewsController::class);
+    Route::resource('certificates', CertificateController::class);
+
+    Route::resource('lecturers', LecturerController::class);
+
+    Route::resource('videos', VideoController::class);
+
+
+
+    // Route::post('/product_save_photos',  [ProductController::class, 'saveAttachmentPhotos'])->name('products.photo.store');
+
+    // Route::resource('services', ServiceController::class);
 
 });
 
@@ -63,7 +112,21 @@ Route::group(
 
         Route::get('/',  [HomeController::class, 'index'])->name('home');
 
+        Route::get('/contact-us',  [HomeController::class, 'contact'])->name('contact-us');
+        Route::get('/services',  [HomeController::class, 'services'])->name('services_all');
+        Route::get('/projects',  [HomeController::class, 'projects_all'])->name('projects_all');
 
+        Route::get('/contact-us',  [ContactController::class, 'show'])->name('contact-us');
+        Route::get('/about',  [HomeController::class, 'about'])->name('about');
+        Route::get('/products', [HomeController::class, 'products'])->name('products');
+        Route::get('/product/{id}', [HomeController::class, 'product_details'])->name('details');
+        Route::get('/products/{departmentId?}', [HomeController::class, 'showProductsByDepartment'])->name('productsByDepartment');
+        Route::get('/service', [HomeController::class,'services'])->name('services');
+        Route::get('/service/{id}', [HomeController::class,'service_details'])->name('service_details');
+        Route::get('/project/{id}', [HomeController::class,'project_details'])->name('project_details');
+        Route::get('/projects/department/{department_id}', [HomeController::class, 'projects_by_department'])->name('projects.by_department');
+Route::get('/news', [HomeController::class, 'news'])->name('front.news');
+Route::get('/news/{slug}', [HomeController::class, 'showNews'])->name('front.news.show');
 
     }
 );
