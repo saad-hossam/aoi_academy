@@ -1,7 +1,12 @@
 <?php
 
-use App\Models\Project;
+use App\Http\Controllers\AboutController;
 use App\Mail\UserMessage;
+
+use App\Http\Controllers\CertificateController;
+use App\Models\Certificate;
+use App\Models\Project;
+// use App\Mail\UserMessage;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -9,13 +14,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AboutController;
+
+
+
+use App\Http\Controllers\NewsController;
+
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\VideoController;
 
 
 use App\Http\Controllers\GallaryController;
@@ -64,6 +75,16 @@ Route::group(['prefix'=>'/admin/','middleware' => ['auth','admin']], function ()
     Route::post('/news/{news}/images', [NewsController::class, 'storeImages'])
         ->name('news.images.store');
 
+
+
+
+    Route::resource('news', NewsController::class);
+    Route::resource('certificates', CertificateController::class);
+
+    Route::resource('lecturers', LecturerController::class);
+
+    Route::resource('videos', VideoController::class);
+
     Route::delete('/news/images/{image}', [NewsController::class, 'destroyImage'])
         ->name('news.images.destroy');
 
@@ -83,6 +104,7 @@ Route::group(
     function () {
 
         Route::get('/',  [HomeController::class, 'index'])->name('home');
+
         Route::get('/contact-us',  [HomeController::class, 'contact'])->name('contact-us');
         Route::get('/services',  [HomeController::class, 'services'])->name('services_all');
         Route::get('/projects',  [HomeController::class, 'projects_all'])->name('projects_all');
@@ -98,7 +120,6 @@ Route::group(
         Route::get('/projects/department/{department_id}', [HomeController::class, 'projects_by_department'])->name('projects.by_department');
 Route::get('/news', [HomeController::class, 'news'])->name('front.news');
 Route::get('/news/{slug}', [HomeController::class, 'showNews'])->name('front.news.show');
-
 
     }
 );
