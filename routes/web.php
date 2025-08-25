@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AboutController;
 use App\Mail\UserMessage;
 
 use App\Http\Controllers\CertificateController;
@@ -109,7 +108,6 @@ Route::group(
         Route::get('/services',  [HomeController::class, 'services'])->name('services_all');
         Route::get('/projects',  [HomeController::class, 'projects_all'])->name('projects_all');
 
-        Route::get('/contact-us',  [ContactController::class, 'show'])->name('contact-us');
         Route::get('/about',  [HomeController::class, 'about'])->name('about');
         Route::get('/products', [HomeController::class, 'products'])->name('products');
         Route::get('/product/{id}', [HomeController::class, 'product_details'])->name('details');

@@ -51,7 +51,6 @@
                         </svg><span class="side-menu__label">الأدوار</span></a>
                 </li>
             {{-- @endcan --}}
-<<<<<<< HEAD
                     <li class="slide">
                                         <a class="side-menu__item" href="{{ route('abouts.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                                 class="side-menu__icon" viewBox="0 0 24 24">
@@ -70,10 +69,7 @@
                                                     d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z" />
                                             </svg><span class="side-menu__label">الاخبار</span></a>
                                     </li>                
-=======
-<<<<<<< HEAD
 
-=======
  @can('partner-list') 
                 <li class="slide">
                     <a class="side-menu__item" href="{{ route('partners.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
@@ -113,8 +109,6 @@
                                 d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z" />
                         </svg><span class="side-menu__label">مكتبة الفيديوهات</span></a>
                 </li>
->>>>>>> master
->>>>>>> 0a60d4f609cd68a77ef2e0946b23d328d8afce68
         </ul>
     </div>
 </aside>
