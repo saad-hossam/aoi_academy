@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreHistoryRequest extends FormRequest
+class StoreAboutRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,12 @@ class StoreHistoryRequest extends FormRequest
     public function rules()
     {
         return [
+             
             'status' => 'required|in:active,inactive',
-            'ar.name' =>'required|string|max:255',
-            'en.name' =>'required|string|max:255',
-            'ar.description' => 'required|string',
-            'en.description' => 'required|string',
+            'ar.title' =>'required|string|max:255',
+            'en.title' =>'required|string|max:255',
+            'ar.desc' => 'required|string',
+            'en.desc' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
@@ -44,6 +45,6 @@ class StoreHistoryRequest extends FormRequest
             'image.max' => 'يجب الا يتخطي حجم الصورة عن 2MB',
             'status.required' => 'حالة التاريخ المطلوبة.',
         ];
-
+        
     }
 }
