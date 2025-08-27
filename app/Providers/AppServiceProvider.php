@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Capability;
 use App\Models\Department;
 use App\Models\News;
 use App\Models\User;
@@ -37,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
         Relation::enforceMorphMap([
              'user' => User::class,
             'news' => News::class,
+            'capabilities' => Capability::class,
 
         ]);
          // Share departments data with the header

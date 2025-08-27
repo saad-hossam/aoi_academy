@@ -14,9 +14,11 @@
             </div>
         </div>
 
+          @can('new-list')
         <div class="d-flex my-xl-auto right-content">
             <a class="btn btn-primary btn-block" href="{{ route('news.index') }}">جميع الأخبار</a>
         </div>
+        @endcan
     </div>
     <!-- breadcrumb -->
 @endsection
