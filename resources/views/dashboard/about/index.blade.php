@@ -25,12 +25,12 @@
                 معلومات عنا</span>
         </div>
     </div>
-    {{-- @can('about-create') --}}
+    @can('about-create')
 
     <div class="d-flex my-xl-auto right-content">
         <a class="btn btn-primary btn-block" href="{{ route('abouts.create') }}">اضافه معلومة</a>
     </div>
-    {{-- @endcan --}}
+    @endcan
 </div>
 <!-- breadcrumb -->
 @endsection

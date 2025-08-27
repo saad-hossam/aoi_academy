@@ -24,7 +24,7 @@ class StoreNewsRequest extends FormRequest
    public function rules(): array
     {
         return [
-            'status' => 'required|in:active,inactive',
+            'status' => 'required|in:active,disable',
 
             // Translations
             'ar.title' => 'required|string|max:255',

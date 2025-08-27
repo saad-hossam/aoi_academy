@@ -8,12 +8,12 @@
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">تعديل الخبر</h4>
+            <h4 class="content-title mb-0 my-auto">تعديل الميزة</h4>
         </div>
     </div>
-    @can('new-list')
+   @can('capability-list')
     <div class="d-flex my-xl-auto right-content">
-        <a class="btn btn-primary btn-block" href="{{ route('news.index') }}">جميع الأخبار</a>
+        <a class="btn btn-primary btn-block" href="{{ route('capabilities.index') }}">جميع الميزات</a>
     </div>
     @endcan
 </div>
@@ -23,42 +23,50 @@
 <div class="row">
     <div class="col-lg-12 col-md-12">
 
-        <!-- Form تعديل الخبر -->
+        {{-- FORM تحديث الميزة --}}
         <div class="card">
             <div class="card-body">
-
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         <div class="alert alert-danger">{{ $error }}</div>
                     @endforeach
                 @endif
 
-                <form method="POST" action="{{ route('news.update', $new->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('capabilities.update', $capability->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
-                    <!-- Translations -->
+                    {{-- Translations --}}
                     <div class="card mb-4">
                         <div class="card-header"><strong>{{ __('words.translations') }}</strong></div>
                         <div class="card-body">
-                            <ul class="nav nav-tabs" id="localeTabs" role="tablist">
+                            <ul class="nav nav-tabs" role="tablist">
                                 @foreach (config('app.languages') as $key => $lang)
                                     <li class="nav-item">
-                                        <a class="nav-link @if ($loop->first) active @endif" id="{{ $key }}-tab" data-toggle="tab" href="#{{ $key }}" role="tab" aria-controls="{{ $key }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">{{ $lang }}</a>
+                                        <a class="nav-link @if ($loop->first) active @endif" data-toggle="tab" href="#{{ $key }}" role="tab">
+                                            {{ $lang }}
+                                        </a>
                                     </li>
                                 @endforeach
                             </ul>
-
                             <div class="tab-content mt-3">
                                 @foreach (config('app.languages') as $key => $lang)
-                                    <div class="tab-pane fade @if ($loop->first) show active @endif" id="{{ $key }}" role="tabpanel" aria-labelledby="{{ $key }}-tab">
+                                    <div class="tab-pane fade @if ($loop->first) show active @endif" id="{{ $key }}" role="tabpanel">
                                         <div class="form-group">
-                                            <label for="{{ $key }}_title">العنوان - {{ $lang }}</label>
-                                            <input type="text" id="{{ $key }}_title" name="{{ $key }}[title]" class="form-control" value="{{ old($key.'.title', $new->translate($key)->title ?? '') }}">
+                                            <label>العنوان - {{ $lang }}</label>
+                                            <input type="text" name="{{ $key }}[title]" class="form-control" value="{{ old($key.'.title', $capability->translate($key)->title ?? '') }}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="{{ $key }}_desc">المحتوى - {{ $lang }}</label>
-                                            <textarea id="{{ $key }}_desc" name="{{ $key }}[desc]" class="form-control" rows="3">{{ old($key.'.desc', $new->translate($key)->desc ?? '') }}</textarea>
+                                            <label>الوصف - {{ $lang }}</label>
+                                            <textarea name="{{ $key }}[desc]" class="form-control" rows="3">{{ old($key.'.desc', $capability->translate($key)->desc ?? '') }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Meta Description - {{ $lang }}</label>
+                                            <textarea name="{{ $key }}[meta_desc]" class="form-control" rows="2">{{ old($key.'.meta_desc', $capability->translate($key)->meta_desc ?? '') }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Meta Keyword - {{ $lang }}</label>
+                                            <input type="text" name="{{ $key }}[meta_keyword]" class="form-control" value="{{ old($key.'.meta_keyword', $capability->translate($key)->meta_keyword ?? '') }}">
                                         </div>
                                     </div>
                                 @endforeach
@@ -66,16 +74,16 @@
                         </div>
                     </div>
 
-                    <!-- General Fields -->
+                    {{-- General Fields --}}
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="image">الصورة الرئيسية</label>
-                                <input type="file" id="image" name="image" class="form-control">
-                                @if ($new->image)
+                                <label>الصورة الرئيسية</label>
+                                <input type="file" name="image" class="form-control">
+                                @if ($capability->image)
                                     <div class="mt-2">
-                                        <a href="{{ asset('images/news/'.$new->image) }}" target="_blank">
-                                            <img src="{{ asset('images/news/'.$new->image) }}" width="100">
+                                        <a href="{{ asset('images/capabilities/'.$capability->image) }}" target="_blank">
+                                            <img src="{{ asset('images/capabilities/'.$capability->image) }}" width="100">
                                         </a>
                                     </div>
                                 @endif
@@ -84,18 +92,18 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="status">الحالة</label>
-                                <select id="status" name="status" class="form-control select2">
-                                    <option value="active" {{ old('status', $new->status) == 'active' ? 'selected' : '' }}>مفعل</option>
-                                    <option value="disabled" {{ old('status', $new->status) == 'disabled' ? 'selected' : '' }}>غير مفعل</option>
+                                <label>الحالة</label>
+                                <select name="status" class="form-control select2">
+                                    <option value="active" {{ old('status', $capability->status) == 'active' ? 'selected' : '' }}>مفعل</option>
+                                    <option value="disabled" {{ old('status', $capability->status) == 'disabled' ? 'selected' : '' }}>غير مفعل</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="col-md-6 mt-3">
                             <div class="form-group">
-                                <label for="order">الترتيب</label>
-                                <input type="number" name="order" class="form-control" value="{{ old('order', $new->order) }}">
+                                <label>الترتيب</label>
+                                <input type="number" name="order" class="form-control" value="{{ old('order', $capability->order) }}">
                             </div>
                         </div>
                     </div>
@@ -106,24 +114,24 @@
                 </form>
             </div>
         </div>
+        {{-- END FORM تحديث الميزة --}}
 
-        <!-- Form رفع الصور -->
+        {{-- FORM رفع الصور --}}
         <div class="card mt-4">
             <div class="card-header"><h5 class="card-title">إدارة الصور</h5></div>
             <div class="card-body">
 
-                <form action="{{ route('news.images.store', $new->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('capabilities.images.store', $capability->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="images">إضافة صور جديدة</label>
-                        <input type="file" name="images[]" class="form-control" multiple>
+                        <label>إضافة صور جديدة</label>
+                        <input type="file" name="images[]" class="form-control" multiple required>
                     </div>
                     <button type="submit" class="btn btn-primary mt-2">رفع الصور</button>
                 </form>
 
                 <hr>
 
-                <!-- Existing Images -->
                 <div class="table-responsive mt-3">
                     <table class="table table-hover text-center">
                         <thead>
@@ -133,7 +141,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($new->images as $image)
+                            @forelse ($capability->images as $image)
                                 <tr>
                                     <td>
                                         <a href="{{ $image->url }}" target="_blank">
@@ -158,11 +166,12 @@
 
             </div>
         </div>
+        {{-- END FORM رفع الصور --}}
 
     </div>
 </div>
 
-<!-- Delete Image Modal -->
+{{-- Delete Image Modal --}}
 <div class="modal fade" id="deleteImageModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -172,11 +181,9 @@
                 <input type="hidden" name="image_id" id="image_id">
                 <div class="modal-header">
                     <h6 class="modal-title">حذف الصورة</h6>
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
-                    <p>هل أنت متأكد من حذف هذه الصورة؟</p>
-                </div>
+                <div class="modal-body"><p>هل أنت متأكد من حذف هذه الصورة؟</p></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
                     <button type="submit" class="btn btn-danger">تأكيد</button>
@@ -194,11 +201,10 @@
 $(document).ready(function () {
     $('.select2').select2();
 
-    // Pass image ID to delete form
     $('#deleteImageModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var imageId = button.data('image_id');
-        var url = "{{ route('news.images.destroy', ':id') }}";
+        var url = "{{ route('capabilities.images.destroy', ':id') }}";
         url = url.replace(':id', imageId);
         $('#deleteImageForm').attr('action', url);
         $('#image_id').val(imageId);

@@ -111,7 +111,7 @@ class NewsController extends Controller
      * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateNewsRequest $request, $id)
+    public function update(UpdateNewsRequest  $request, $id)
     {
        $new = News::find($id);
     if (!$new) {
@@ -160,14 +160,14 @@ class NewsController extends Controller
 // }
 
     // Save new images
-    foreach ($request->file('images') as $extraImage) {
-        $extraImagePath = $this->SaveImage('images/news/more', $extraImage);
+    // foreach ($request->file('images') as $extraImage) {
+    //     $extraImagePath = $this->SaveImage('images/news/more', $extraImage);
 
-       $new->images()->create([
-            'path' => $extraImagePath,
-            'url'  => asset('images/news/more/'.$extraImagePath), 
-        ]);
-    }
+    //    $new->images()->create([
+    //         'path' => $extraImagePath,
+    //         'url'  => asset('images/news/more/'.$extraImagePath), 
+    //     ]);
+    
 
 
 
