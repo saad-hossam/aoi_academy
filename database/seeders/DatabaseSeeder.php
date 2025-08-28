@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
 
             PermissionTableSeeder::class,
             CreateAdminUserSeeder::class,
+            AboutSeeder::class,
+            NewsSeeder::class,
+            CapabilitySeeder::class,
             // CountriesTableSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();

@@ -29,6 +29,21 @@ class PermissionTableSeeder extends Seeder
            'role-edit',
            'role-delete',
 
+            'about-list',
+           'about-create',
+           'about-edit',
+           'about-delete',
+ 
+            'new-list',
+           'new-create',
+           'new-edit',
+           'new-delete',
+          
+           'capability-list',
+           'capability-create',
+           'capability-edit',
+           'capability-delete', 
+
            'partner-list',
            'partner-create',
            'partner-edit',
