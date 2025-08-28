@@ -35,9 +35,9 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\SubDepartmentController;
+use App\Http\Controllers\UnitController;
+use App\Http\Controllers\CategoryController;
 
 // use App\Http\Middleware\TrackVisitor;
 
@@ -93,7 +93,9 @@ Route::group(['prefix'=>'/admin/','middleware' => ['auth','admin']], function ()
     Route::resource('lecturers', LecturerController::class);
 
     Route::resource('videos', VideoController::class);
+    Route::resource('units', UnitController::class);
 
+    Route::resource('categories', CategoryController::class);
 
 
     // Route::post('/product_save_photos',  [ProductController::class, 'saveAttachmentPhotos'])->name('products.photo.store');
