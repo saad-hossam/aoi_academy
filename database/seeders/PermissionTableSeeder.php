@@ -65,6 +65,16 @@ class PermissionTableSeeder extends Seeder
            'video-create',
            'video-edit',
            'video-delete',
+
+           'unit-list',
+           'unit-create',
+           'unit-edit',
+           'unit-delete',
+
+           'category-list',
+           'category-create',
+           'category-edit',
+           'category-delete',
            
         ];
 
