@@ -22,14 +22,9 @@ use App\Http\Controllers\ProjectController;
 
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
-<<<<<<< HEAD
-use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UnitController;
-use App\Http\Controllers\CategoryController;
-=======
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SubDepartmentController;
->>>>>>> 77e798eb2b59ba297a957238ac20d6c345cded6d
 
 
 use App\Http\Controllers\UserController;
@@ -95,9 +90,7 @@ Route::group(['prefix'=>'/admin/','middleware' => ['auth','admin']], function ()
     Route::resource('videos', VideoController::class);
     Route::resource('units', UnitController::class);
 
-<<<<<<< HEAD
     Route::resource('categories', CategoryController::class);
-=======
     Route::delete('/news/images/{image}', [NewsController::class, 'destroyImage'])
         ->name('news.images.destroy');
         Route::post('capabilities/{capability}/images', [CapabilityController::class, 'storeImages'])
@@ -105,7 +98,6 @@ Route::group(['prefix'=>'/admin/','middleware' => ['auth','admin']], function ()
 
     Route::delete('capabilities/images/{image}', [CapabilityController::class, 'destroyImage'])
     ->name('capabilities.images.destroy');
->>>>>>> 77e798eb2b59ba297a957238ac20d6c345cded6d
 
 
     // Route::post('/product_save_photos',  [ProductController::class, 'saveAttachmentPhotos'])->name('products.photo.store');
