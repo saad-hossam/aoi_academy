@@ -76,6 +76,8 @@ class PermissionTableSeeder extends Seeder
            'category-edit',
            'category-delete',
            
+           'message-list',
+          'message-delete',
         ];
 
         foreach ($permissions as $permission) {
