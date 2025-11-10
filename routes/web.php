@@ -21,7 +21,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProjectController;
 
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceController;     
+use App\Http\Controllers\UnitController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SubDepartmentController;
 
@@ -69,6 +70,8 @@ Route::group(['prefix'=>'/admin/','middleware' => ['auth','admin']], function ()
     Route::get('/index', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
     Route::resource('users', UserController::class);
+        Route::resource('messages', MessageController::class);
+
     Route::resource('roles', RoleController::class);
     Route::resource('abouts',AboutController::class);
     Route::resource('news',NewsController::class);
@@ -87,7 +90,9 @@ Route::group(['prefix'=>'/admin/','middleware' => ['auth','admin']], function ()
     Route::resource('lecturers', LecturerController::class);
 
     Route::resource('videos', VideoController::class);
+    Route::resource('units', UnitController::class);
 
+    Route::resource('categories', CategoryController::class);
     Route::delete('/news/images/{image}', [NewsController::class, 'destroyImage'])
         ->name('news.images.destroy');
         Route::post('capabilities/{capability}/images', [CapabilityController::class, 'storeImages'])
