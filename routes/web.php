@@ -1,43 +1,46 @@
 <?php
 
-use App\Mail\UserMessage;
+use App\Http\Controllers\AboutController;
 
-use App\Http\Controllers\CertificateController;
-use App\Models\Certificate;
-use App\Models\Project;
-// use App\Mail\UserMessage;
-use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
-
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-
-
-
-
-use App\Http\Controllers\NewsController;
-
-use App\Http\Controllers\SliderController;
+use App\Http\Controllers\CapabilityController;
+use App\Http\Controllers\CategoryController;
+// use App\Mail\UserMessage;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\LecturerController;
-use App\Http\Controllers\VideoController;
-
+use App\Http\Controllers\DepartmentController;
 
 use App\Http\Controllers\GallaryController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DepartmentController;
+
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ServiceController;     
+use App\Http\Controllers\UnitController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SubDepartmentController;
+
+
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\VideoController;
+use App\Mail\UserMessage;
+use App\Models\Certificate;
+use App\Models\Project;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization as FacadesLaravelLocalization;
+
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 
 // use App\Http\Middleware\TrackVisitor;
 
@@ -67,33 +70,36 @@ Route::group(['prefix'=>'/admin/','middleware' => ['auth','admin']], function ()
     Route::get('/index', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
     Route::resource('users', UserController::class);
+        Route::resource('messages', MessageController::class);
+
     Route::resource('roles', RoleController::class);
+    Route::resource('abouts',AboutController::class);
+    Route::resource('news',NewsController::class);
+    Route::resource('capabilities',CapabilityController::class);
+   
+    Route::post('/news/{news}/images', [NewsController::class, 'storeImages'])
+        ->name('news.images.store');
 
 
 
 
-
-
-    Route::resource('departments', DepartmentController::class);
-    // Route::resource('categories', CategoryController::class);
-    Route::resource('products', ProductController::class);
-    // Route::resource('gallaries', GallaryController::class);
-    Route::resource('messages', MessageController::class);
-    // Route::resource('abouts', AboutController::class);
-    Route::resource('partners', PartnerController::class);
-    Route::resource('sliders', SliderController::class);
-    // Route::resource('histories', HistoryController::class);
-    Route::resource('histories', HistoryController::class);
-    Route::resource('services', ServiceController::class);
-    Route::resource('projects', ProjectController::class);
-    Route::get('projects/{project}/images', [ProjectController::class, 'showImages'])->name('projects.showImages');
     Route::resource('news', NewsController::class);
     Route::resource('certificates', CertificateController::class);
+    Route::resource('partners',PartnerController::class);
 
     Route::resource('lecturers', LecturerController::class);
 
     Route::resource('videos', VideoController::class);
+    Route::resource('units', UnitController::class);
 
+    Route::resource('categories', CategoryController::class);
+    Route::delete('/news/images/{image}', [NewsController::class, 'destroyImage'])
+        ->name('news.images.destroy');
+        Route::post('capabilities/{capability}/images', [CapabilityController::class, 'storeImages'])
+     ->name('capabilities.images.store');
+
+    Route::delete('capabilities/images/{image}', [CapabilityController::class, 'destroyImage'])
+    ->name('capabilities.images.destroy');
 
 
     // Route::post('/product_save_photos',  [ProductController::class, 'saveAttachmentPhotos'])->name('products.photo.store');
@@ -116,7 +122,6 @@ Route::group(
         Route::get('/services',  [HomeController::class, 'services'])->name('services_all');
         Route::get('/projects',  [HomeController::class, 'projects_all'])->name('projects_all');
 
-        Route::get('/contact-us',  [ContactController::class, 'show'])->name('contact-us');
         Route::get('/about',  [HomeController::class, 'about'])->name('about');
         Route::get('/products', [HomeController::class, 'products'])->name('products');
         Route::get('/product/{id}', [HomeController::class, 'product_details'])->name('details');
