@@ -21,7 +21,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProjectController;
 
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\ServiceController;     
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SubDepartmentController;
@@ -76,7 +76,7 @@ Route::group(['prefix'=>'/admin/','middleware' => ['auth','admin']], function ()
     Route::resource('abouts',AboutController::class);
     Route::resource('news',NewsController::class);
     Route::resource('capabilities',CapabilityController::class);
-   
+
     Route::post('/news/{news}/images', [NewsController::class, 'storeImages'])
         ->name('news.images.store');
 
@@ -117,12 +117,19 @@ Route::group(
     function () {
 
         Route::get('/',  [HomeController::class, 'index'])->name('home');
+        Route::get('/about',  [HomeController::class, 'about'])->name('about');
+        Route::get('/contact-us',  [HomeController::class, 'contact'])->name('contact');
+        Route::get('/courses', [HomeController::class,'courses'])->name('courses');
+        Route::get('/rooms', [HomeController::class,'rooms'])->name('rooms');
+        Route::get('/instructors', [HomeController::class,'instructors'])->name('instructors');
+        Route::get('/videos', [HomeController::class,'videos'])->name('videos');
+        Route::get('/news', [HomeController::class,'news'])->name('news');
 
-        Route::get('/contact-us',  [HomeController::class, 'contact'])->name('contact-us');
+
+
         Route::get('/services',  [HomeController::class, 'services'])->name('services_all');
         Route::get('/projects',  [HomeController::class, 'projects_all'])->name('projects_all');
 
-        Route::get('/about',  [HomeController::class, 'about'])->name('about');
         Route::get('/products', [HomeController::class, 'products'])->name('products');
         Route::get('/product/{id}', [HomeController::class, 'product_details'])->name('details');
         Route::get('/products/{departmentId?}', [HomeController::class, 'showProductsByDepartment'])->name('productsByDepartment');
@@ -130,8 +137,6 @@ Route::group(
         Route::get('/service/{id}', [HomeController::class,'service_details'])->name('service_details');
         Route::get('/project/{id}', [HomeController::class,'project_details'])->name('project_details');
         Route::get('/projects/department/{department_id}', [HomeController::class, 'projects_by_department'])->name('projects.by_department');
-Route::get('/news', [HomeController::class, 'news'])->name('front.news');
-Route::get('/news/{slug}', [HomeController::class, 'showNews'])->name('front.news.show');
 
     }
 );
