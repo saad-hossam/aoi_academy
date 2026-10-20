@@ -34,10 +34,10 @@ class PermissionTableSeeder extends Seeder
            'about-edit',
            'about-delete',
  
-            'new-list',
-           'new-create',
-           'new-edit',
-           'new-delete',
+            'news-list',
+           'news-create',
+           'news-edit',
+           'news-delete',
           
            'capability-list',
            'capability-create',
@@ -75,6 +75,14 @@ class PermissionTableSeeder extends Seeder
            'category-create',
            'category-edit',
            'category-delete',
+
+         
+
+           'course-list',
+           'course-create',
+           'course-edit',
+           'course-delete',
+
            
            'message-list',
           'message-delete',

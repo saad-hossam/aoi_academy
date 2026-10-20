@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOI Academy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="./assets/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/" onclick="showPage('home')">
+                <i class="fa-solid fa-building-columns me-2"></i>AOI Academy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" onclick="showPage('home')">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('about')">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('courses')">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('rooms')">Rooms & Labs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('instructors')">Instructors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('news')">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('videos')">Videos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('contact')">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center flex-row-reverse gap-2">
+                    <div class="form-check form-switch d-flex align-items-center gap-2">
+                        <input class="form-check-input m-0" type="checkbox" id="languageSwitch"
+                            onchange="toggleLanguage()">
+                        <label class="form-check-label text-light" for="languageSwitch" id="languageLabel">
+                            العربية
+                        </label>
+                    </div>
+                    <button class="btn btn-auth me-2" onclick="showPage('signin')" id="authBtn">
+                        <span class="auth-btn-text">Sign In</span>
+                    </button>
+                    <button class="btn btn-outline-light me-2" onclick="showPage('user')" id="userBtn"
+                        style="display: none;">
+                        <span class="profile-btn-text">Profile</span>
+                    </button>
+                    <button class="btn btn-outline-light" onclick="logout()" id="logoutBtn" style="display: none;">
+                        <span class="logout-btn-text">Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 hero-content">
+                        <h1>Elevate Your Skills with <span class="text-secondary-custom">Expert Training</span></h1>
+                        <p>Join thousands of professionals who have advanced their careers through our comprehensive
+                            training programs, modern facilities, and world-class instructors.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <button class="btn btn-primary-custom" onclick="showPage('courses')">
+                                Explore Courses <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                            <button class="btn btn-outline-custom" onclick="showPage('about')">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stat-item">
+                            <span class="stat-number">10,000+</span>
+                            <span class="stat-label">Graduates</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stat-item">
+                            <span class="stat-number">150+</span>
+                            <span class="stat-label">Courses</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Expert Instructors</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stat-item">
+                            <span class="stat-number">25</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Courses -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Featured Courses</h2>
+                <p class="section-subtitle">Discover our most popular and in-demand training programs</p>
+                <div class="row g-4">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-custom">
+                            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top" alt="Digital Marketing">
+                            <div class="card-body">
+                                <h5 class="card-title">Digital Marketing Mastery</h5>
+                                <p class="card-text">Learn comprehensive digital marketing strategies including SEO,
+                                    SEM, social media marketing, content creation, and analytics.</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge bg-primary-custom">10 Weeks</span>
+                                    <span class="text-primary-custom fw-bold">$900</span>
+                                </div>
+                                <button class="btn btn-card w-100"
+                                    onclick="handleCTAClick('course', 'digital-marketing')">
+                                    Enroll Now <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-custom">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top" alt="Project Management">
+                            <div class="card-body">
+                                <h5 class="card-title">Project Management Professional</h5>
+                                <p class="card-text">Comprehensive PMP certification preparation covering project
+                                    lifecycle, methodologies, risk management, and stakeholder communication.</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge bg-primary-custom">14 Weeks</span>
+                                    <span class="text-primary-custom fw-bold">$1,300</span>
+                                </div>
+                                <button class="btn btn-card w-100"
+                                    onclick="handleCTAClick('course', 'project-management')">
+                                    Enroll Now <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-custom">
+                            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top" alt="Financial Analysis">
+                            <div class="card-body">
+                                <h5 class="card-title">Financial Analysis & Modeling</h5>
+                                <p class="card-text">Advanced financial modeling techniques, valuation methods, and
+                                    investment analysis for finance professionals and analysts.</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge bg-primary-custom">12 Weeks</span>
+                                    <span class="text-primary-custom fw-bold">$1,100</span>
+                                </div>
+                                <button class="btn btn-card w-100"
+                                    onclick="handleCTAClick('course', 'financial-analysis')">
+                                    Enroll Now <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-custom">
+                            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top" alt="Communication Skills">
+                            <div class="card-body">
+                                <h5 class="card-title">Executive Communication Skills</h5>
+                                <p class="card-text">Master public speaking, presentation skills, negotiation
+                                    techniques, and interpersonal communication for executive success.</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge bg-primary-custom">8 Weeks</span>
+                                    <span class="text-primary-custom fw-bold">$800</span>
+                                </div>
+                                <button class="btn btn-card w-100" onclick="handleCTAClick('course', 'communication')">
+                                    Enroll Now <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Rooms & Labs Page -->
+    <div id="rooms-page" class="page hidden">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title">Rooms & Labs</h1>
+                <p class="page-subtitle">Modern facilities for conferences, workshops, and events</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-custom">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top" alt="Executive Conference Room">
+                            <div class="card-body">
+                                <h5 class="card-title">Executive Conference Room</h5>
+                                <p class="card-text">Premium conference room with capacity for 50 people, featuring
+                                    state-of-the-art AV equipment, video conferencing capabilities, and elegant
+                                    furnishing perfect for board meetings and executive sessions.</p>
+                                <div class="mb-3">
+                                    <span class="badge bg-secondary-custom me-2">50 Capacity</span>
+                                    <span class="badge bg-tertiary-color me-2">AV Equipment</span>
+                                    <span class="badge bg-primary-custom">Video Conference</span>
+                                </div>
+                                <div class="text-primary-custom fw-bold mb-3">$200/hour</div>
+                                <button class="btn btn-card w-100"
+                                    onclick="handleCTAClick('room', 'executive-conference')">
+                                    Book Now <i class="fas fa-calendar-alt ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-custom">
+                            <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top" alt="Computer Lab">
+                            <div class="card-body">
+                                <h5 class="card-title">Advanced Computer Lab</h5>
+                                <p class="card-text">Fully equipped computer lab with 30 high-performance workstations,
+                                    latest software suites, and high-speed internet. Perfect for technical training and
+                                    software development workshops.</p>
+                                <div class="mb-3">
+                                    <span class="badge bg-secondary-custom me-2">30 Workstations</span>
+                                    <span class="badge bg-tertiary-color me-2">Latest Software</span>
+                                    <span class="badge bg-primary-custom">High-Speed WiFi</span>
+                                </div>
+                                <div class="text-primary-custom fw-bold mb-3">$150/hour</div>
+                                <button class="btn btn-card w-100" onclick="handleCTAClick('room', 'computer-lab')">
+                                    Book Now <i class="fas fa-calendar-alt ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-custom">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top" alt="Training Hall">
+                            <div class="card-body">
+                                <h5 class="card-title">Main Training Hall</h5>
+                                <p class="card-text">Spacious training hall accommodating up to 100 participants with
+                                    theater-style seating, professional lighting, sound system, and multiple projection
+                                    screens for large-scale events.</p>
+                                <div class="mb-3">
+                                    <span class="badge bg-secondary-custom me-2">100 Capacity</span>
+                                    <span class="badge bg-tertiary-color me-2">Theater Seating</span>
+                                    <span class="badge bg-primary-custom">Sound System</span>
+                                </div>
+                                <div class="text-primary-custom fw-bold mb-3">$300/hour</div>
+                                <button class="btn btn-card w-100" onclick="handleCTAClick('room', 'training-hall')">
+                                    Book Now <i class="fas fa-calendar-alt ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-custom">
+                            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top" alt="Workshop Studio">
+                            <div class="card-body">
+                                <h5 class="card-title">Interactive Workshop Studio</h5>
+                                <p class="card-text">Modern workshop space designed for interactive sessions with
+                                    flexible seating arrangements, whiteboard walls, collaboration tools, and breakout
+                                    areas for team activities.</p>
+                                <div class="mb-3">
+                                    <span class="badge bg-secondary-custom me-2">25 Capacity</span>
+                                    <span class="badge bg-tertiary-color me-2">Flexible Seating</span>
+                                    <span class="badge bg-primary-custom">Collaboration Tools</span>
+                                </div>
+                                <div class="text-primary-custom fw-bold mb-3">$120/hour</div>
+                                <button class="btn btn-card w-100" onclick="handleCTAClick('room', 'workshop-studio')">
+                                    Book Now <i class="fas fa-calendar-alt ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Instructors Page -->
+    <div id="instructors-page" class="page hidden">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title">Our Expert Instructors</h1>
+                <p class="page-subtitle">Learn from distinguished professionals and industry leaders</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="instructor-card">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                                class="instructor-avatar" alt="Dr. Sarah Johnson">
+                            <h4 class="instructor-name">Dr. Sarah Johnson</h4>
+                            <p class="instructor-title">Former Minister of Education | Leadership Expert</p>
+                            <p class="instructor-bio">With over 30 years in public service and education policy, Dr.
+                                Johnson brings unparalleled expertise in leadership development and organizational
+                                transformation.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="instructor-card">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                                class="instructor-avatar" alt="Prof. Michael Chen">
+                            <h4 class="instructor-name">Prof. Michael Chen</h4>
+                            <p class="instructor-title">Former Finance Minister | Investment Strategist</p>
+                            <p class="instructor-bio">A renowned economist and former Finance Minister, Prof. Chen
+                                specializes in financial modeling, investment analysis, and economic policy development.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="instructor-card">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616c0763690?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                                class="instructor-avatar" alt="Dr. Emily Rodriguez">
+                            <h4 class="instructor-name">Dr. Emily Rodriguez</h4>
+                            <p class="instructor-title">Tech Industry Veteran | Data Science Expert</p>
+                            <p class="instructor-bio">Former CTO of major tech companies, Dr. Rodriguez leads our data
+                                analytics and digital transformation programs with cutting-edge industry insights.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="instructor-card">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                                class="instructor-avatar" alt="Mr. David Thompson">
+                            <h4 class="instructor-name">Mr. David Thompson</h4>
+                            <p class="instructor-title">Former Trade Minister | International Business</p>
+                            <p class="instructor-bio">With extensive experience in international trade and diplomacy,
+                                Mr. Thompson brings global perspective to our business strategy and negotiation courses.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="instructor-card">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                                class="instructor-avatar" alt="Dr. Lisa Wang">
+                            <h4 class="instructor-name">Dr. Lisa Wang</h4>
+                            <p class="instructor-title">Marketing Director | Digital Strategy Expert</p>
+                            <p class="instructor-bio">A digital marketing pioneer with 20+ years of experience, Dr. Wang
+                                has led marketing transformations for Fortune 500 companies and startups alike.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="instructor-card">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                                class="instructor-avatar" alt="Prof. James Mitchell">
+                            <h4 class="instructor-name">Prof. James Mitchell</h4>
+                            <p class="instructor-title">Project Management Institute Fellow</p>
+                            <p class="instructor-bio">A certified PMP with extensive experience in managing
+                                multi-billion dollar projects, Prof. Mitchell leads our project management certification
+                                programs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- News Page -->
+    <div id="news-page" class="page hidden">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title">Latest News</h1>
+                <p class="page-subtitle">Stay updated with our latest announcements and achievements</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <article class="card card-custom">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                                        class="rounded-circle mb-3" width="120" height="120" style="object-fit: cover;"
+                                        alt="User Avatar">
+                                    <h4 class="text-primary-custom">John Doe</h4>
+                                    <p class="text-muted">Senior Manager</p>
+                                    <p class="small text-muted">Member since: January 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card card-custom">
+                            <div class="card-body">
+                                <h5 class="text-primary-custom mb-4">My Courses</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="border rounded p-3">
+                                            <h6>Advanced Leadership Training</h6>
+                                            <div class="progress mb-2" style="height: 8px;">
+                                                <div class="progress-bar"
+                                                    style="width: 75%; background-color: var(--secondary-color);"></div>
+                                            </div>
+                                            <small class="text-muted">Progress: 75%</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="border rounded p-3">
+                                            <h6>Digital Marketing Mastery</h6>
+                                            <div class="progress mb-2" style="height: 8px;">
+                                                <div class="progress-bar"
+                                                    style="width: 100%; background-color: var(--secondary-color);">
+                                                </div>
+                                            </div>
+                                            <small class="text-success">Completed</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-custom mt-4">
+                            <div class="card-body">
+                                <h5 class="text-primary-custom mb-4">Account Settings</h5>
+                                <form>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="userFirstName" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="userFirstName" value="John">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="userLastName" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="userLastName" value="Doe">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="userEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="userEmail"
+                                            value="john.doe@company.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="userPhone" class="form-label">Phone</label>
+                                        <input type="tel" class="form-control" id="userPhone" value="+20 1234567890">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary-custom">Update Profile</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sign In Page -->
+    <div id="signin-page" class="page hidden">
+        <section class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 col-md-7">
+                        <div class="form-custom">
+                            <div class="text-center mb-4">
+                                <h3 class="text-primary-custom">Welcome Back</h3>
+                                <p class="text-muted">Sign in to your account</p>
+                            </div>
+                            <form onsubmit="handleSignIn(event)">
+                                <div class="mb-3">
+                                    <label for="signinEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="signinEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signinPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="signinPassword" required>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary-custom w-100 mb-3">
+                                    Sign In <i class="fas fa-sign-in-alt ms-2"></i>
+                                </button>
+                                <div class="text-center">
+                                    <p class="mb-0">Don't have an account?
+                                        <a href="#" onclick="showPage('signup')" class="text-primary-custom">Sign up
+                                            here</a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sign Up Page -->
+    <div id="signup-page" class="page hidden">
+        <section class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="form-custom">
+                            <div class="text-center mb-4">
+                                <h3 class="text-primary-custom">Create Account</h3>
+                                <p class="text-muted">Join thousands of professionals</p>
+                            </div>
+                            <form onsubmit="handleSignUp(event)">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="signupFirstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="signupFirstName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="signupLastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="signupLastName" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="signupEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupPhone" class="form-label">Phone</label>
+                                    <input type="tel" class="form-control" id="signupPhone" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="signupPassword" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" id="confirmPassword" required>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                                    <label class="form-check-label" for="agreeTerms">
+                                        I agree to the <a href="#" class="text-primary-custom">Terms of Service</a> and
+                                        <a href="#" class="text-primary-custom">Privacy Policy</a>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary-custom w-100 mb-3">
+                                    Create Account <i class="fas fa-user-plus ms-2"></i>
+                                </button>
+                                <div class="text-center">
+                                    <p class="mb-0">Already have an account?
+                                        <a href="#" onclick="showPage('signin')" class="text-primary-custom">Sign in
+                                            here</a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Course Enrollment Form -->
+    <div id="course-enrollment-page" class="page hidden">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title">Course Enrollment</h1>
+                <p class="page-subtitle">Fill out the form to enroll in your selected course</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="form-custom">
+                            <h3 class="text-primary-custom mb-4">Enrollment Information</h3>
+
+                            <!-- User Type Switch -->
+                            <div class="mb-4">
+                                <label class="form-label">Are you from inside or outside the company?</label>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="userTypeSwitch"
+                                        onchange="toggleUserType()">
+                                    <label class="form-check-label" for="userTypeSwitch">
+                                        <span id="userTypeLabel">Inside Company</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <form onsubmit="handleCourseEnrollment(event)">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="enrollFirstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="enrollFirstName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="enrollLastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="enrollLastName" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="enrollEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="enrollEmail" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="enrollPhone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="enrollPhone" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="enrollId" class="form-label">ID Number</label>
+                                    <input type="text" class="form-control" id="enrollId" required>
+                                </div>
+
+                                <!-- Inside Company Fields -->
+                                <div id="insideCompanyFields">
+                                    <div class="mb-3">
+                                        <label for="fileNumber" class="form-label">File Number</label>
+                                        <input type="text" class="form-control" id="fileNumber" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="workSection" class="form-label">Work Section</label>
+                                        <select class="form-control" id="workSection" required>
+                                            <option value="">Select your section</option>
+                                            <option value="hr">Human Resources</option>
+                                            <option value="it">Information Technology</option>
+                                            <option value="finance">Finance</option>
+                                            <option value="marketing">Marketing</option>
+                                            <option value="operations">Operations</option>
+                                            <option value="sales">Sales</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Outside Company Fields -->
+                                <div id="outsideCompanyFields" class="hidden">
+                                    <div class="mb-3">
+                                        <label for="college" class="form-label">College/University</label>
+                                        <input type="text" class="form-control" id="college"
+                                            placeholder="Enter your college or university">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="direction" class="form-label">Field of Study/Direction</label>
+                                        <input type="text" class="form-control" id="direction"
+                                            placeholder="Enter your field of study or professional direction">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="selectedCourse" class="form-label">Selected Course</label>
+                                    <input type="text" class="form-control" id="selectedCourse" readonly>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="additionalNotes" class="form-label">Additional Notes (Optional)</label>
+                                    <textarea class="form-control" id="additionalNotes" rows="3"
+                                        placeholder="Any additional information or special requirements"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary-custom w-100">
+                                    Submit Enrollment <i class="fas fa-paper-plane ms-2"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Room Booking Form -->
+    <div id="room-booking-page" class="page hidden">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title">Room Booking</h1>
+                <p class="page-subtitle">Reserve your preferred room or lab</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="form-custom">
+                            <h3 class="text-primary-custom mb-4">Booking Information</h3>
+                            <form onsubmit="handleRoomBooking(event)">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="bookingFirstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="bookingFirstName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="bookingLastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="bookingLastName" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="bookingEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="bookingEmail" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="bookingPhone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="bookingPhone" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="company" class="form-label">Company/Organization</label>
+                                    <input type="text" class="form-control" id="company" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="selectedRoom" class="form-label">Selected Room/Lab</label>
+                                    <input type="text" class="form-control" id="selectedRoom" readonly>
+                                </div>
+
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="bookingDate" class="form-label">Booking Date</label>
+                                        <input type="date" class="form-control" id="bookingDate" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="bookingTime" class="form-label">Start Time</label>
+                                        <input type="time" class="form-control" id="bookingTime" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="duration" class="form-label">Duration (hours)</label>
+                                    <select class="form-control" id="duration" required>
+                                        <option value="">Select duration</option>
+                                        <option value="1">1 hour</option>
+                                        <option value="2">2 hours</option>
+                                        <option value="4">4 hours</option>
+                                        <option value="8">8 hours (full day)</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="eventPurpose" class="form-label">Purpose of Event</label>
+                                    <select class="form-control" id="eventPurpose" required>
+                                        <option value="">Select purpose</option>
+                                        <option value="conference">Conference</option>
+                                        <option value="workshop">Workshop</option>
+                                        <option value="training">Training Session</option>
+                                        <option value="meeting">Meeting</option>
+                                        <option value="seminar">Seminar</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="attendees" class="form-label">Expected Number of Attendees</label>
+                                    <input type="number" class="form-control" id="attendees" min="1" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="specialRequests" class="form-label">Special Requests (Optional)</label>
+                                    <textarea class="form-control" id="specialRequests" rows="3"
+                                        placeholder="Any special equipment or setup requirements"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary-custom w-100">
+                                    Submit Booking Request <i class="fas fa-calendar-check ms-2"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- Videos Page -->
+    <div id="videos-page" class="page hidden">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title">Training Videos</h1>
+                <p class="page-subtitle">Watch highlights from our courses and events</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="card card-custom">
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Featured Video"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Leadership Masterclass with Dr. Sarah Johnson</h4>
+                                <p class="card-text">Watch excerpts from our popular leadership masterclass featuring
+                                    former Education Minister Dr. Sarah Johnson as she shares insights on effective
+                                    leadership in the modern workplace.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5 class="text-primary-custom mb-3">More Videos</h5>
+                        <div class="mb-4">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-4">
+                                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                                            class="img-fluid rounded-start h-100" style="object-fit: cover;"
+                                            alt="Data Analytics">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body p-3">
+                                            <h6 class="card-title small">Data Analytics Fundamentals</h6>
+                                            <small class="text-muted">15:30</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-4">
+                                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                                            class="img-fluid rounded-start h-100" style="object-fit: cover;"
+                                            alt="Digital Marketing">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body p-3">
+                                            <h6 class="card-title small">Digital Marketing Trends</h6>
+                                            <small class="text-muted">12:45</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-4">
+                                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                                            class="img-fluid rounded-start h-100" style="object-fit: cover;"
+                                            alt="Project Management">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body p-3">
+                                            <h6 class="card-title small">Project Management Tips</h6>
+                                            <small class="text-muted">18:20</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page hidden">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title">Contact Us</h1>
+                <p class="page-subtitle">Get in touch with our team</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-8">
+                        <div class="form-custom">
+                            <h3 class="text-primary-custom mb-4">Send us a Message</h3>
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <select class="form-control" id="subject" required>
+                                        <option value="">Select a subject</option>
+                                        <option value="course-inquiry">Course Inquiry</option>
+                                        <option value="room-booking">Room Booking</option>
+                                        <option value="general">General Question</option>
+                                        <option value="support">Technical Support</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary-custom">
+                                    Send Message <i class="fas fa-paper-plane ms-2"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card card-custom h-100">
+                            <div class="card-body">
+                                <h5 class="text-primary-custom mb-4">Get in Touch</h5>
+                                <div class="mb-4">
+                                    <h6><i class="fas fa-map-marker-alt text-secondary-custom me-2"></i>Address</h6>
+                                    <p class="text-muted">123 Training Street<br>Business District<br>Cairo, Egypt</p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6><i class="fas fa-phone text-secondary-custom me-2"></i>Phone</h6>
+                                    <p class="text-muted">+20 2 1234 5678</p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6><i class="fas fa-envelope text-secondary-custom me-2"></i>Email</h6>
+                                    <p class="text-muted">info@elitetraining.com</p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6><i class="fas fa-clock text-secondary-custom me-2"></i>Office Hours</h6>
+                                    <p class="text-muted">Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00
+                                        PM<br>Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- User Profile Page -->
+    <div id="user-page" class="page hidden">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title">User Profile</h1>
+                <p class="page-subtitle">Manage your account and track your progress</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-4">
+                        <div class="card card-custom text-center">
+                            <div class="card-body p-4">
+                                <img src="https://imagesplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    class="card-img-top" alt="Leadership Training">
+                                <div class="card-body">
+                                    <h5 class="card-title">Advanced Leadership Training</h5>
+                                    <p class="card-text">Master the skills needed to lead teams effectively and drive
+                                        organizational success in today's dynamic business environment.</p>
+                                    <button class="btn btn-card" onclick="handleCTAClick('course', 'leadership')">
+                                        Enroll Now <i class="fas fa-arrow-right ms-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card card-custom">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    class="card-img-top" alt="Data Analytics">
+                                <div class="card-body">
+                                    <h5 class="card-title">Data Analytics & Visualization</h5>
+                                    <p class="card-text">Transform data into actionable insights using the latest tools
+                                        and techniques in data science and business intelligence.</p>
+                                    <button class="btn btn-card" onclick="handleCTAClick('course', 'data-analytics')">
+                                        Enroll Now <i class="fas fa-arrow-right ms-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card card-custom">
+                                <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    class="card-img-top" alt="Digital Marketing">
+                                <div class="card-body">
+                                    <h5 class="card-title">Digital Marketing Mastery</h5>
+                                    <p class="card-text">Learn cutting-edge digital marketing strategies including SEO,
+                                        social media, and content marketing for maximum impact.</p>
+                                    <button class="btn btn-card"
+                                        onclick="handleCTAClick('course', 'digital-marketing')">
+                                        Enroll Now <i class="fas fa-arrow-right ms-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="section bg-light-custom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2 class="section-title text-start">Why Choose Elite Training Center?</h2>
+                        <div class="mb-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="bg-secondary-custom rounded-circle p-2 me-3" style="min-width: 40px;">
+                                    <i class="fas fa-star text-primary-custom"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-primary-custom">Expert Instructors</h5>
+                                    <p class="text-muted">Learn from industry leaders, including former ministers and
+                                        top executives.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="bg-secondary-custom rounded-circle p-2 me-3" style="min-width: 40px;">
+                                    <i class="fas fa-building text-primary-custom"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-primary-custom">Modern Facilities</h5>
+                                    <p class="text-muted">State-of-the-art labs and conference rooms equipped with
+                                        latest technology.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="bg-secondary-custom rounded-circle p-2 me-3" style="min-width: 40px;">
+                                    <i class="fas fa-certificate text-primary-custom"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-primary-custom">Certified Programs</h5>
+                                    <p class="text-muted">Receive industry-recognized certifications upon course
+                                        completion.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            class="img-fluid rounded-4" alt="Training Session">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page hidden">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title">About Elite Training Center</h1>
+                <p class="page-subtitle">Empowering professionals for over 25 years</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="row align-items-center mb-5">
+                    <div class="col-lg-6">
+                        <h2 class="text-primary-custom mb-4">Our Story</h2>
+                        <p class="lead">Founded in 1998, Elite Training Center has been at the forefront of professional
+                            development, helping individuals and organizations achieve their full potential through
+                            innovative training solutions.</p>
+                        <p>We believe that continuous learning is the key to success in today's rapidly evolving
+                            business landscape. Our mission is to provide world-class training that combines theoretical
+                            knowledge with practical application, ensuring our graduates are ready to tackle real-world
+                            challenges.</p>
+                        <p>With a team of distinguished instructors, including former government ministers and industry
+                            leaders, we offer unparalleled expertise across various domains.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="https://images.unsplash.com/photo-1435575653489-b0873ec954e2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="img-fluid rounded-4" alt="Our Story">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card card-custom h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-bullseye fa-3x text-tertiary-custom mb-3"></i>
+                                <h4 class="card-title">Our Mission</h4>
+                                <p class="card-text">To empower professionals with cutting-edge skills and knowledge
+                                    that drive innovation and success in their careers and organizations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card card-custom h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-eye fa-3x text-tertiary-custom mb-3"></i>
+                                <h4 class="card-title">Our Vision</h4>
+                                <p class="card-text">To be the leading training institution that transforms careers and
+                                    drives organizational excellence across the region.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card card-custom h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-heart fa-3x text-tertiary-custom mb-3"></i>
+                                <h4 class="card-title">Our Values</h4>
+                                <p class="card-text">Excellence, integrity, innovation, and commitment to continuous
+                                    improvement in everything we do.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Courses Page -->
+    <div id="courses-page" class="page hidden">
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title">Our Courses</h1>
+                <p class="page-subtitle">Comprehensive training programs designed for your success</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-custom">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top" alt="Leadership">
+                            <div class="card-body">
+                                <h5 class="card-title">Advanced Leadership Training</h5>
+                                <p class="card-text">Develop essential leadership skills including strategic thinking,
+                                    team management, and organizational development. Perfect for managers and
+                                    executives.</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge bg-primary-custom">12 Weeks</span>
+                                    <span class="text-primary-custom fw-bold">$1,200</span>
+                                </div>
+                                <button class="btn btn-card w-100" onclick="handleCTAClick('course', 'leadership')">
+                                    Enroll Now <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-custom">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top" alt="Data Analytics">
+                            <div class="card-body">
+                                <h5 class="card-title">Data Analytics & Visualization</h5>
+                                <p class="card-text">Master data analysis techniques, statistical methods, and
+                                    visualization tools including Python, R, and Tableau for data-driven decision
+                                    making.</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge bg-primary-custom">16 Weeks</span>
+                                    <span class="text-primary-custom fw-bold">$1,500</span>
+                                </div>
+                                <button class="btn btn-card w-100" onclick="handleCTAClick('course', 'data-analytics')">
+                                    Enroll Now <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card card-custom">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top" alt="Digital Marketing">
+                            <div class="card-body">
+                                <h5 class="card-title">Digital Marketing Mastery</h5>
+                                <p class="card-text">Gain expertise in digital marketing strategies including SEO, PPC,
+                                    social media, and content marketing to drive online engagement and conversions.</p>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge bg-primary-custom">10 Weeks</span>
+                                    <span class="text-primary-custom fw-bold">$1,000</span>
+                                </div>
+                                <button class="btn btn-card w-100"
+                                    onclick="handleCTAClick('course', 'digital-marketing')">
+                                    Enroll Now <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>AOI Academy</h5>
+                    <p class="text-light">Empowering professionals with world-class training and development programs
+                        for over 25 years.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="showPage('about')">About</a></li>
+                        <li><a href="#" onclick="showPage('courses')">Courses</a></li>
+                        <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Services</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" onclick="showPage('courses')">Professional Training</a></li>
+                        <li><a href="#" onclick="showPage('rooms')">Room Rental</a></li>
+                        <li><a href="#" onclick="showPage('instructors')">Expert Instructors</a></li>
+                        <li><a href="#">Certification Programs</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i>123 AOI Academy, Cairo, Egypt</li>
+                        <li><i class="fas fa-phone me-2"></i>+20 2 1234 5678</li>
+                        <li><i class="fas fa-envelope me-2"></i>info@aoi-academy.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 AOI Academy. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/main.js"></script>
+</body>
+
+</html>
