@@ -33,7 +33,7 @@
             </div>
         </div>
         <ul class="side-menu">
-            {{-- @can('user-list') --}}
+            @can('user-list')
                 <li class="slide">
                     <a class="side-menu__item" href="{{ route('users.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
                             class="side-menu__icon" viewBox="0 0 24 24">
@@ -43,8 +43,8 @@
                                 d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z" />
                         </svg><span class="side-menu__label">المستخدمين</span></a>
                 </li>
-            {{-- @endcan --}}
-            {{-- @can('role-list') --}}
+            @endcan
+            @can('role-list')
                 <li class="slide">
                     <a class="side-menu__item" href="{{ route('roles.index') }}"><svg xmlns="http://www.w3.org/2000/svg"
                             class="side-menu__icon" viewBox="0 0 24 24">
@@ -54,7 +54,7 @@
                                 d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z" />
                         </svg><span class="side-menu__label">الأدوار</span></a>
                 </li>
-            {{-- @endcan --}}
+            @endcan
 
                         <li class="slide">
                                 <a class="side-menu__item" href="{{ route('abouts.index') }}"><svg
@@ -89,7 +89,7 @@
                                                         d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z" />
                                         </svg><span class="side-menu__label">الامكانيات </span></a>
                         </li>
-                        {{-- @can('partner-list') --}}
+                        @can('partner-list')
                                 <li class="slide">
                                         <a class="side-menu__item" href="{{ route('partners.index') }}"><svg
                                                         xmlns="http://www.w3.org/2000/svg" class="side-menu__icon"
@@ -101,7 +101,7 @@
                                                                 d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z" />
                                                 </svg><span class="side-menu__label">شركاء النجاح</span></a>
                                 </li>
-                        {{-- @endcan --}}
+                        @endcan
                         <li class="slide">
                                 <a class="side-menu__item" href="{{ route('certificates.index') }}"><svg
                                                 xmlns="http://www.w3.org/2000/svg" class="side-menu__icon"
@@ -158,7 +158,7 @@
                                                         d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z" />
                                         </svg><span class="side-menu__label">الفئات </span></a>
                         </li>
-                        {{-- @can('message-list') --}}
+                        @can('message-list')
 
                                 
                         <li class="slide">
@@ -172,7 +172,7 @@
                                                         d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z" />
                                         </svg><span class="side-menu__label">الرسائل</span></a>
                         </li>
-                                                {{-- @endcan --}}
+                                                @endcan
 
                 </ul>
         </div>
