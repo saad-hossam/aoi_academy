@@ -5,9 +5,11 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CapabilityController;
 use App\Http\Controllers\CategoryController;
+
 // use App\Mail\UserMessage;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 
 use App\Http\Controllers\GallaryController;
@@ -85,6 +87,9 @@ Route::group(['prefix'=>'/admin/','middleware' => ['auth','admin']], function ()
 
     Route::resource('news', NewsController::class);
     Route::resource('certificates', CertificateController::class);
+Route::delete('courses/images/{image}', [CourseController::class, 'destroyImage'])
+    ->name('courses.images.destroy');
+Route::resource('courses', CourseController::class)->except(['show']);
     Route::resource('partners',PartnerController::class);
 
     Route::resource('lecturers', LecturerController::class);

@@ -49,7 +49,10 @@ class PermissionTableSeeder extends Seeder
            'partner-edit',
            'partner-delete',
 
-       
+       'course-list',
+           'course-create',
+           'course-edit',
+           'course-delete',
 
            'certificate-list',
            'certificate-create',
